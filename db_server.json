@@ -1,0 +1,142 @@
+{
+  "data_server": {
+    "howdy": [
+      {
+        "sg1-trojan.bonds.id": "SG-HE 1 Trojan",
+        "sg2-trojan.bonds.id": "SG-HE 2 Trojan",
+        "sg3-trojan.bonds.id": "SG-HE 3 Trojan",
+        "id2-trojan.bonds.id": "ID-Biznet Jakarta Trojan",
+        "sgovh-trojan.bonds.id": "SG Trojan OVH",
+        "sg6-trojan.bonds.id": "SG-HE MUX Trojan",
+        "sg8-trojan.bonds.id": "SG UDPGW Trojan",
+        "idtj-ikd.bonds.id": "ID-IKD Trojan",
+        "id5-trojan.bonds.id": "ID-Biznet Banten Trojan",
+        "idtj-herza.bonds.id": "ID Herza Trojan",
+        "sg-atha.bonds.id": "SG DualStak Trojan",
+        "sg-3.test3.net": "ovh_newtes",
+        "id-1.test3.net": "id-herza-new",
+        "sg-2.test3.net": "amp-news",
+        "v2ray1.udpgw.com": "weekly-vm1",
+        "v2ray2.udpgw.com": "weekly-vm2",
+        "v2ray3.udpgw.com": "weekly-vm3",
+        "sg-4.test3.net": "t-melbi",
+        "trojan2.udpgw.com": "trojanweek1"
+      }
+    ],
+    "sshstores": [
+      {
+        "sg.vmess1.xservs.xyz": "sg1",
+        "sg.vmess2.xservs.xyz": "sg2",
+        "sg.vmess3.xservs.xyz": "sg3",
+        "sg.vmess4.xservs.xyz": "sg4",
+        "sg.vmess5.xservs.xyz": "sg5",
+        "sg.vmess6.xservs.xyz": "sg6",
+        "sg.vmess7.xservs.xyz": "sg7",
+        "sg.vmess8.xservs.xyz": "sg8",
+        "sg1vm.xservs.xyz": "sg1stores",
+        "sg2vm.xservs.xyz": "sg2stores",
+        "sg3vm.xservs.xyz": "sg3stores",
+        "sg4vm.xservs.xyz": "sg4stores",
+        "sg5vm.xservs.xyz": "sg5stores",
+        "sg6vm.xservs.xyz": "sg6stores",
+        "sg7vm.xservs.xyz": "sg7stores",
+        "sg8vm.xservs.xyz": "sg8stores"
+      }
+    ],
+    "sshocean": [
+      {
+        "id1.v2rayserv.com": "ID 01",
+        "id2.v2rayserv.com": "ID 02",
+        "id3.v2rayserv.com": "ID 03",
+        "id4.v2rayserv.com": "ID 04",
+        "id5.v2rayserv.com": "ID 05",
+        "id6.v2rayserv.com": "ID 06",
+        "sg1-ctb.v2rayserv.com": "SG CTB 01",
+        "sg2-ctb.v2rayserv.com": "SG CTB 02",
+        "sgovh1.v2rayserv.com": "SG OVH 01",
+        "sg1.v2rayserv.com": "VM SG 01",
+        "sg2.v2rayserv.com": "VM SG 02",
+        "sg3.v2rayserv.com": "VM SG 03",
+        "sg4.v2rayserv.com": "VM SG 04",
+        "sg5.v2rayserv.com": "VM SG 05",
+        "sgt1.sshocean.net": "Trojan SG 01",
+        "sgt2.sshocean.net": "Trojan SG 02",
+        "sgt3.sshocean.net": "Trojan SG 03",
+        "idt1.sshocean.net": "Trojan ID 1",
+        "idt2.sshocean.net": "Trojan ID 2",
+        "idt3.sshocean.net": "Trojan ID 3",
+        "sg2-mlb.v2rayserv.com": "VmMelbi2",
+        "sg1-mlb.v2rayserv.com": "VmMelbi1"
+      }
+    ],
+    "fastssh": [
+      {
+        "id2.v2-ray.com": "V2Ray Indonesia ATHA",
+        "sg2.v2-ray.com": "V2Ray Singapore HE-2",
+        "sg1.v2-ray.com": "V2Ray Singapore He-1",
+        "id-herza.v2-ray.com": "V2Ray ID Herza",
+        "id-ikd.v2-ray.com": "V2Ray ID IKD",
+        "sg-ovh1.v2-ray.com": "V2Ray SG OVH 1",
+        "sg-ovh2.v2-ray.com": "V2Ray SG OVH 2",
+        "sg-atha.v2-ray.com": "V2Ray Singapore AMP",
+        "sg1-temp.v2-ray.com": "V2Ray SG-1 WORRY-BIZ",
+        "sg2-temp.v2-ray.com": "V2Ray SG-2 WORRY-BIZ",
+        "sg3-temp.v2-ray.com": "V2Ray SG-3 WORRY-BIZ",
+        "sg-he1.vmess.sbs": "he1-b",
+        "sg-contabo.vmess.sbs": "ctb",
+        "sg-amp.vmess.sbs": "amp-new",
+        "id1-temp.v2-ray.com": "id1-biz",
+        "id-herza.vmess.sbs": "id-herza-b",
+        "sg-1.0rd.net": "he1_new",
+        "sg-2.0rd.net": "ovh1_new",
+        "sg-3.0rd.net": "ctb_new",
+        "sg-4.0rd.net": "melbi",
+        "sg-5.0rd.net": "ovh2_new",
+        "sg-6.0rd.net": "amp1_new",
+        "sg-7.0rd.net": "amp2_new",
+        "sg-8.0rd.net": "melbi2_new",
+        "sg-9.0rd.net": "melbi3_new",
+        "sg-10.0rd.net": "ovh3_new",
+        "id-1.0rd.net": "herza_new",
+        "id-2.0rd.net": "ikd_new",
+        "dynamic-sg1b.obfs.xyz": "dynamic-sg1",
+        "dynamic-us1b.obfs.xyz": "dynamic-us1",
+        "dynamic-sg2b.obfs.xyz": "dynamic-sg2",
+        "dynamic-us2b.obfs.xyz": "dynamic-us2",
+        "dynamic-sg3b.obfs.xyz": "dynamic-sg3",
+        "dynamic-us3b.obfs.xyz": "dynamic-us3",
+        "us-15.0rd.net": "US-15"
+      }
+    ],
+    "jagoanssh": [
+      {
+        "sg.vmes.xyz": "SG-JG 1",
+        "sg2.vmes.xyz": "SG-JG 2",
+        "sg3.vmes.xyz": "SG-JG 3",
+        "sg4.vmes.xyz": "SG-JG 4",
+        "sg5.vmes.xyz": "SG-JG 5",
+        "sg6.vmes.xyz": "SG-JG 6",
+        "sg7.vmes.xyz": "SG-JG 7",
+        "sg8.vmes.xyz": "SG-JG 8",
+        "sg1go.ipservers.xyz": "Tr-SG-JG 1",
+        "sg2go.ipservers.xyz": "Tr-SG-JG 2",
+        "sg3go.ipservers.xyz": "Tr-SG-JG 3",
+        "sgcgo.ipservers.xyz": "Tr-SG-JG 30 Day",
+        "id1go.ipservers.xyz": "ID1 GO",
+        "id2go.ipservers.xyz": "ID2 GO"
+      }
+    ],
+    "pisovpn": [
+      {
+        "sg1.freenet.buzz": "PS-SG 1",
+        "sg2.freenet.buzz": "PS-SG 2",
+        "sg3.freenet.buzz": "PS-SG 3",
+        "sg4.freenet.buzz": "PS-SG 4",
+        "sg5.freenet.buzz": "PS-SG 5",
+        "sg6.freenet.buzz": "PS-SG 6",
+        "sg1.ipdns.fun": "ss-sg1",
+        "sg2.ipdns.fun": "ss-sg2"
+      }
+    ]
+  }
+}

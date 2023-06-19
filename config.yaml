@@ -1,0 +1,17 @@
+proxies:
+  - name: ca1.v2-ray.us-None_Db-gm
+    server: cf-vod.nimo.tv
+    port: 8080
+    type: vmess
+    uuid: 0b6df992-3e4b-47a5-894e-feeae4007a19
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: ca1.v2-ray.us
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: ca1.v2-ray.us
+    udp: true
