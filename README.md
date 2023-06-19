@@ -1,3 +1,3 @@
 # Generator-Config-Clash
-Generate Akun Trojan,Vmess (Tsel)
+Generate Akun Trojan,Trojan-Go,Vmess (Tsel)
 Jalankan app.py
