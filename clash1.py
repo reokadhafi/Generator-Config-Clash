@@ -146,7 +146,11 @@ def nama_server(server):
         for ii in range(len(bc)):
             if server in bc[ii]:
                 return bc[ii][server], i
+            else:
+                return None
 
+
+# print(nama_server("v2ay2.udpgw.com"))
 # %%
 # untuk generate dari database
 
@@ -157,28 +161,25 @@ def generate(jenis, mode, tipe):
         data = json.load(json_files)
         akun_parsing = data["akun_parsing"]
         data_bug = data["data_bug"]
+        data_bug_set = set(data_bug)
         if jenis == "vmess":
             read_db = akun_parsing["vmess"]
             for i in range(len(read_db)):
                 cm = read_db[i]
                 dt = {}
+                search = [cm['add'], cm['sni'], cm['ps'], cm['host']]
+                for item in search:
+                    if "." in item and item not in data_bug_set:
+                        try:
+                            dd = nama_server(search[i])[0]
+                            db_server = search[i]
+                        except TypeError:
+                            db_server = f"{search[i]}"
+                            dd = db_server+"-No_DB"
                 if mode == "gamemax":
                     bug = "cf-vod.nimo.tv"
                     if tipe == "lama":
-                        search = [cm['add'], cm['sni'], cm['ps'], cm['host']]
-                        for i in range(len(search)):
-                            try:
-                                if nama_server(search[i]) is not None and search[i] != nama_server(search[i])[0]:
-                                    dd = nama_server(search[i])[0]
-                                    db_server = search[i]
-                                else:
-                                    for i in range(len(search)):
-                                        if "." in search[i] and search[i] != bug:
-                                            db_server = f"{search[i]}"
-                                            dd = db_server+"-No_DB"
-                            except TypeError:
-                                continue
-                            dt['name'] = f"{dd}-gm"
+                        dt['name'] = f"{dd}-gm"
                         dt['server'] = bug
                         dt['port'] = 8080
                         dt['type'] = 'vmess'
@@ -196,20 +197,7 @@ def generate(jenis, mode, tipe):
                                          'headers': {'Host': db_server}}
                         dt['udp'] = 'true'
                     if tipe == "baru":
-                        search = [cm['add'], cm['sni'], cm['ps'], cm['host']]
-                        for i in range(len(search)):
-                            try:
-                                if nama_server(search[i]) is not None and search[i] != nama_server(search[i])[0]:
-                                    dd = nama_server(search[i])[0]
-                                    db_server = search[i]
-                                else:
-                                    for i in range(len(search)):
-                                        if "." in search[i] and search[i] != bug:
-                                            db_server = f"{search[i]}"
-                                            dd = db_server+"-No_DB"
-                            except TypeError:
-                                continue
-                            dt['name'] = f"{dd}-gmb"
+                        dt['name'] = f"{dd}-gmb"
                         dt['server'] = bug
                         dt['port'] = 443
                         dt['type'] = 'vmess'
@@ -227,20 +215,7 @@ def generate(jenis, mode, tipe):
                 if mode == "opok":
                     bug = "corona.jakarta.go.id"
                     if tipe == "lama":
-                        search = [cm['add'], cm['sni'], cm['ps'], cm['host']]
-                        for i in range(len(search)):
-                            try:
-                                if nama_server(search[i]) is not None and search[i] != nama_server(search[i])[0]:
-                                    dd = nama_server(search[i])[0]
-                                    db_server = search[i]
-                                else:
-                                    for i in range(len(search)):
-                                        if "." in search[i] and search[i] != bug:
-                                            db_server = f"{search[i]}"
-                                            dd = db_server+"-No_DB"
-                            except TypeError:
-                                continue
-                            dt['name'] = f"{dd}-op"
+                        dt['name'] = f"{dd}-op"
                         dt['server'] = bug
                         dt['port'] = 443
                         dt['type'] = 'vmess'
@@ -258,20 +233,7 @@ def generate(jenis, mode, tipe):
                                          'headers': {'Host': cm['host']}}
                         dt['udp'] = 'true'
                     if tipe == "baru":
-                        search = [cm['add'], cm['sni'], cm['ps'], cm['host']]
-                        for i in range(len(search)):
-                            try:
-                                if nama_server(search[i]) is not None and search[i] != nama_server(search[i])[0]:
-                                    dd = nama_server(search[i])[0]
-                                    db_server = search[i]
-                                else:
-                                    for i in range(len(search)):
-                                        if "." in search[i] and search[i] != bug:
-                                            db_server = f"{search[i]}"
-                                            dd = db_server+"-No_DB"
-                            except TypeError:
-                                continue
-                            dt['name'] = f"{dd}-opb"
+                        dt['name'] = f"{dd}-opb"
                         dt['server'] = bug
                         dt['port'] = 443
                         dt['type'] = 'vmess'
@@ -287,20 +249,7 @@ def generate(jenis, mode, tipe):
                                          'headers': {'Host': cm['host']}}
                         dt['udp'] = 'true'
                     if tipe == "worry":
-                        search = [cm['add'], cm['sni'], cm['ps'], cm['host']]
-                        for i in range(len(search)):
-                            try:
-                                if nama_server(search[i]) is not None and search[i] != nama_server(search[i])[0]:
-                                    dd = nama_server(search[i])[0]
-                                    db_server = search[i]
-                                else:
-                                    for i in range(len(search)):
-                                        if "." in search[i] and search[i] != bug:
-                                            db_server = f"{search[i]}"
-                                            dd = db_server+"-No_DB"
-                            except TypeError:
-                                continue
-                            dt['name'] = f"{dd}-opw"
+                        dt['name'] = f"{dd}-opw"
                         dt['server'] = db_server
                         dt['port'] = 80
                         dt['type'] = 'vmess'
