@@ -1,9 +1,15 @@
 # %%
-import re
+import random
+import string
 import json
 import yaml
 from urllib.parse import urlparse, parse_qs
 from base64 import b64decode
+
+# pembuat string random
+def generate_random_string(length):
+    characters = string.digits + string.ascii_lowercase
+    return ''.join(random.choice(characters) for _ in range(length))
 
 # kumpulan parser terpakai di function add_akun
 
@@ -30,6 +36,13 @@ def parser_trojan(data):
         "host": host,
         "path": path
     }
+    if tipe == "":
+        for i in data_dict:
+            data_dict[i] = None
+    if tipe == "grpc":
+    	servicename = query_params.get("serviceName", [""])[0]
+    	data_dict["network"] = "grpc"
+    	data_dict["grpc-service-name"] = servicename
     return data_dict
 
 
@@ -55,7 +68,7 @@ def parser_v2ray(data):
     for i in range(len(rl.split(':'))-1):
         dt = rl.split(",")[i].replace("'", '').split(":")
         db1[dt[0]] = dt[1]
-        print(dt)
+        #print(dt)
     return db1
 
 
@@ -171,11 +184,11 @@ def generate(jenis, mode, tipe):
                 for item in search:
                     if "." in item and item not in data_bug_set:
                         try:
-                            dd = nama_server(search[i])[0]
-                            db_server = search[i]
+                            dd = nama_server(item)[0]
+                            db_server = item
                         except TypeError:
-                            db_server = f"{search[i]}"
-                            dd = db_server+"-No_DB"
+                            db_server = f"{item}"
+                            dd = db_server+"-"+generate_random_string(6)
                 if mode == "gamemax":
                     bug = "cf-vod.nimo.tv"
                     if tipe == "lama":
@@ -190,10 +203,15 @@ def generate(jenis, mode, tipe):
                         dt['skip-cert-verify'] = 'true'
                         cm['sni'] = db_server
                         dt['servername'] = cm['sni']
-                        dt['network'] = 'ws'
-                        if cm["host"] in data_bug:
+                        if cm['net'] == "grpc":
+                        	dt['network'] = 'grpc'
+                        	dt['grpc-opts'] = {'grpc-service-name': cm['path']}
+                        	dt['port'] = 443
+                        	dt['tls'] = 'true'
+                        if cm['net'] == "ws":
+                            dt['network'] = 'ws'
                             cm["host"] = db_server
-                        dt['ws-opts'] = {'path': cm['path'],
+                            dt['ws-opts'] = {'path': cm['path'],
                                          'headers': {'Host': db_server}}
                         dt['udp'] = 'true'
                     if tipe == "baru":
@@ -271,34 +289,41 @@ def generate(jenis, mode, tipe):
             for i in range(len(read_db)):
                 cm = read_db[i]
                 dt = {}
+                search = [cm['server'], cm['sni'], cm['host']]
+                for item in search:
+                    if "." in item and item not in data_bug_set:
+                        try:
+                            dd = nama_server(item)[0]
+                            db_server = item
+                        except TypeError:
+                            db_server = f"{item}"
+                            dd = db_server+"-"+generate_random_string(6)
                 if mode == "gamemax":
                     bug = "cf-vod.nimo.tv"
                     if tipe == "lama":
-                        if nama_server(cm['host']) is not None:
-                            dt['name'] = f"{nama_server(cm['host'])[0]}-gm"
-                        else:
-                            dt['name'] = f"{cm['host']}-None_Db-gm"
+                        dt['name'] = f"{dd}-gm"
                         dt['server'] = bug
                         dt['port'] = 443
                         dt['type'] = 'trojan'
                         dt['password'] = cm['password']
                         dt['tls'] = 'true'
                         dt['skip-cert-verify'] = 'true'
-                        dt['sni'] = cm['host']
-                        dt['network'] = 'ws'
-                        dt['ws-opts'] = {'path': cm['path'],
+                        dt['sni'] = db_server
+                        if cm['type'] == "grpc":
+                            dt['network'] = 'grpc'
+                            dt['grpc-opts'] = {'grpc-service-name': cm['grpc-service-name']}
+                        if cm['type'] == "ws":
+                            dt['network'] = 'ws'
+                            dt['ws-opts'] = {'path': cm['path'],
                                          'headers': {'Host': cm['host']}}
                         dt['udp'] = 'true'
                 if mode == "opok":
                     bug = "corona.jakarta.go.id"
                     if tipe == "lama":
-                        if nama_server(cm['host']) is not None:
-                            dt['name'] = f"{nama_server(cm['host'])[0]}-op"
-                        else:
-                            dt['name'] = f"{cm['host']}-None_Db-op"
+                        dt['name'] = f"{dd}-op"
                         dt['server'] = bug
                         dt['port'] = 443
-                        dt['type'] = 'trojan'
+                        dt['type'] = cm['type']
                         dt['password'] = cm['password']
                         dt['tls'] = 'true'
                         dt['skip-cert-verify'] = 'true'
@@ -313,13 +338,19 @@ def generate(jenis, mode, tipe):
             for i in range(len(read_db)):
                 cm = read_db[i]
                 dt = {}
+                search = [cm['server'], cm['host']]
+                for item in search:
+                    if "." in item and item not in data_bug_set:
+                        try:
+                            dd = nama_server(item)[0]
+                            db_server = item
+                        except TypeError:
+                            db_server = f"{item}"
+                            dd = db_server+"-"+generate_random_string(6)
                 if mode == "gamemax":
                     bug = "cf-vod.nimo.tv"
                     if tipe == "lama":
-                        if nama_server(cm['server']) is not None:
-                            dt['name'] = f"{nama_server(cm['server'])[0]}-gm"
-                        else:
-                            dt['name'] = f"{cm['password']}-None_Db-gm"
+                        dt['name'] = f"{dd}-gm"
                         dt['server'] = bug
                         dt['port'] = 80
                         dt['type'] = 'ss'
@@ -332,10 +363,7 @@ def generate(jenis, mode, tipe):
                 if mode == "opok":
                     bug = "corona.jakarta.go.id"
                     if tipe == "lama":
-                        if nama_server(cm['server']) is not None:
-                            dt['name'] = f"{nama_server(cm['server'])[0]}-op"
-                        else:
-                            dt['name'] = f"{cm['password']}-None_Db-op"
+                        dt['name'] = f"{dd}-op"
                         dt['server'] = bug
                         dt['port'] = 443
                         dt['type'] = 'ss'
