@@ -68,7 +68,6 @@ def parser_v2ray(data):
     for i in range(len(rl.split(':'))-1):
         dt = rl.split(",")[i].replace("'", '').split(":")
         db1[dt[0]] = dt[1]
-        #print(dt)
     return db1
 
 
@@ -204,6 +203,7 @@ def generate(jenis, mode, tipe):
                         cm['sni'] = db_server
                         dt['servername'] = cm['sni']
                         if cm['net'] == "grpc":
+                        	dt['name'] = f"{dd}-grpc-gm"
                         	dt['network'] = 'grpc'
                         	dt['grpc-opts'] = {'grpc-service-name': cm['path']}
                         	dt['port'] = 443
@@ -310,6 +310,7 @@ def generate(jenis, mode, tipe):
                         dt['skip-cert-verify'] = 'true'
                         dt['sni'] = db_server
                         if cm['type'] == "grpc":
+                            dt['name'] = f"{dd}-grpc-gm"
                             dt['network'] = 'grpc'
                             dt['grpc-opts'] = {'grpc-service-name': cm['grpc-service-name']}
                         if cm['type'] == "ws":
