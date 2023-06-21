@@ -1,7 +1,6 @@
 import webbrowser as wb
 from clash1 import write_database, add_akun, clear_akun, generate, write_config, result
-from flask import Flask, render_template, url_for, request, redirect
-from base64 import b64decode
+from flask import Flask, render_template, request
 
 url = "http://127.0.0.1:5000"
 
